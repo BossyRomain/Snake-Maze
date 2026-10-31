@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dixhy1chv7gin"]
+
+[ext_resource type="Texture2D" uid="uid://dpajloquwre4n" path="res://Assets/Textures/snake.png" id="1_cr650"]
+
+[node name="SnakeBody" type="Node2D" unique_id=1761187421]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=248604695]
+texture_filter = 1
+texture = ExtResource("1_cr650")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
