@@ -23,6 +23,7 @@ window/stretch/aspect="expand"
 [global_group]
 
 Apples=""
+Chickens=""
 
 [input]
 
@@ -56,6 +57,7 @@ move_up={
 2d_physics/layer_1="Maze walls"
 2d_physics/layer_2="Snake head"
 2d_physics/layer_3="Apples"
+2d_physics/layer_4="Ennemies"
 
 [physics]
 

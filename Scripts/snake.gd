@@ -1,6 +1,8 @@
 extends Node2D
 class_name Snake
 
+signal moved(Vector2)
+
 const TILE_SIZE: int = 16
 
 @export var prev_dir: Vector2
@@ -32,6 +34,7 @@ func _input(event: InputEvent) -> void:
 			_move(dir)
 		double_moves_left = max(0, double_moves_left - 1)
 		_update_body_sprites(dir)
+		moved.emit(body[0].global_position)
 
 func grow(grow_size: int):
 	var body_scene = load("res://Scenes/Snake/snake_body.tscn")

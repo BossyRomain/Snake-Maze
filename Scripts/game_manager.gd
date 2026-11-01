@@ -7,6 +7,10 @@ func _ready() -> void:
 	var apples = get_tree().get_nodes_in_group("Apples")
 	for apple in apples:
 		apple.eaten.connect(_on_apple_eaten)
+	
+	var chickens = get_tree().get_nodes_in_group("Chickens")
+	for chicken in chickens:
+		snake.moved.connect(chicken.move)
 
 func _on_apple_eaten(type: Apple.Type):
 	var grow_size = 1

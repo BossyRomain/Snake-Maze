@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bo2iuytr1bkde"]
+
+[ext_resource type="Script" uid="uid://cfak4n208wix5" path="res://Scripts/chicken.gd" id="1_1ppt0"]
+[ext_resource type="Texture2D" uid="uid://di7j1w40ywei5" path="res://Assets/Textures/chicken.png" id="1_et367"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t7c0a"]
+radius = 4.0
+
+[node name="Chicken" type="Area2D" unique_id=887416333 groups=["Chickens"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_1ppt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032573476]
+shape = SubResource("CircleShape2D_t7c0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=432707576]
+texture = ExtResource("1_et367")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=260276473]
+path_desired_distance = 8.0
+target_desired_distance = 1.0
+path_max_distance = 1000.0
+simplify_path = true
+simplify_epsilon = 2.0
+debug_use_custom = true
