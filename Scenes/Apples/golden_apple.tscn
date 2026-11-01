@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bnpcdhs22qrw2"]
+
+[ext_resource type="PackedScene" uid="uid://d2ksjt6arvvus" path="res://Scenes/Apples/apple.tscn" id="1_ld6mh"]
+[ext_resource type="Texture2D" uid="uid://dcw5v0e3pvwok" path="res://Assets/Textures/apples.png" id="2_p6emi"]
+
+[node name="GoldenApple" unique_id=1264443920 instance=ExtResource("1_ld6mh")]
+type = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=540950922]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_p6emi")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)

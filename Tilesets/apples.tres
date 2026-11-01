@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" format=3 uid="uid://owrriq8kv5gw"]
+
+[ext_resource type="PackedScene" uid="uid://csnafqkcxsold" path="res://Scenes/Apples/red_apple.tscn" id="1_wkisc"]
+[ext_resource type="PackedScene" uid="uid://bokng0ay1po8w" path="res://Scenes/Apples/green_apple.tscn" id="2_c3o02"]
+[ext_resource type="PackedScene" uid="uid://bnpcdhs22qrw2" path="res://Scenes/Apples/golden_apple.tscn" id="3_l46u0"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1gctm"]
+resource_name = "Apples"
+scenes/4/scene = ExtResource("1_wkisc")
+scenes/5/scene = ExtResource("2_c3o02")
+scenes/6/scene = ExtResource("3_l46u0")
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_1gctm")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d2ksjt6arvvus"]
+
+[ext_resource type="Script" uid="uid://cwq2ak408ruck" path="res://Scripts/apple.gd" id="1_fluay"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t7c0a"]
+radius = 4.0
+
+[node name="Apple" type="Area2D" unique_id=1264443920 groups=["Apples"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fluay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1010815259]
+shape = SubResource("CircleShape2D_t7c0a")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

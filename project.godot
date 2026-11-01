@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+Apples=""
+
 [input]
 
 move_left={
@@ -50,7 +54,8 @@ move_up={
 [layer_names]
 
 2d_physics/layer_1="Maze walls"
-2d_physics/layer_2="Snake"
+2d_physics/layer_2="Snake head"
+2d_physics/layer_3="Apples"
 
 [physics]
 

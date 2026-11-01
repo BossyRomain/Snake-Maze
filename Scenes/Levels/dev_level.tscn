@@ -1,15 +1,24 @@
 [gd_scene format=4 uid="uid://cf4g8tm87axrr"]
 
 [ext_resource type="TileSet" uid="uid://cejkx7s3so1qb" path="res://Tilesets/maze.tres" id="1_dn228"]
+[ext_resource type="PackedScene" uid="uid://ctohvaqmynle8" path="res://Scenes/game_manager.tscn" id="1_o1jow"]
 [ext_resource type="PackedScene" uid="uid://bnd7qtv5pyy4l" path="res://Scenes/Snake/snake.tscn" id="2_0phcs"]
+[ext_resource type="TileSet" uid="uid://owrriq8kv5gw" path="res://Tilesets/apples.tres" id="2_x6hwe"]
 [ext_resource type="PackedScene" uid="uid://dixhy1chv7gin" path="res://Scenes/Snake/snake_body.tscn" id="3_x6hwe"]
 
 [node name="DevLevel" type="Node2D" unique_id=1637969569]
+
+[node name="GameManager" parent="." unique_id=162518294 node_paths=PackedStringArray("snake") instance=ExtResource("1_o1jow")]
+snake = NodePath("../Snake")
 
 [node name="Maze" type="TileMapLayer" parent="." unique_id=288022533]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAAAAAQAAAADAAEAAAAAAAEAAAADAAEAAAAAAAIAAAADAAEAAAAAAAMAAAADAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAACAAIAAAAAAAAAAAADAAIAAAABAAAAAAACAAMAAAACAAAAAAADAAMAAAADAAAAAAAFAAAAAAAAAAQAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAAAAUAAAADAAEAAAAAAAYAAAADAAEAAAAAAAcAAAADAAEAAAAAAAgAAAACAAIAAAAMAAgAAAADAAIAAAALAAgAAAAAAAEAAAAKAAgAAAAAAAEAAAAJAAgAAAAAAAEAAAAIAAgAAAAAAAEAAAAHAAgAAAAAAAEAAAAGAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAEAAgAAAAAAAEAAAADAAgAAAAAAAEAAAACAAgAAAAAAAEAAAABAAgAAAAAAAEAAAAMAAcAAAACAAEAAAAMAAYAAAACAAEAAAAMAAUAAAACAAEAAAAMAAQAAAACAAEAAAAMAAMAAAACAAEAAAAMAAIAAAACAAEAAAAMAAEAAAACAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAIAAAACAAUAAAAAAAAAAAACAAYAAAACAAAAAAAGAAUAAAAAAAEAAAAGAAYAAAABAAEAAAADAAYAAAABAAEAAAAEAAYAAAABAAEAAAAFAAYAAAABAAEAAAADAAUAAAAAAAEAAAAEAAUAAAAAAAEAAAAFAAUAAAAAAAEAAAAIAAYAAAADAAAAAAAIAAQAAAABAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAADAAIAAAAHAAYAAAABAAEAAAAIAAUAAAADAAEAAAAKAAQAAAAAAAMAAAAKAAYAAAABAAMAAAAKAAUAAAABAAUAAAAFAAEAAAABAAUAAAAFAAIAAAABAAUAAAAFAAMAAAABAAMAAAAKAAIAAAADAAMAAAAHAAIAAAACAAMAAAAJAAIAAAAAAAUAAAAIAAIAAAAAAAUAAAA=")
 tile_set = ExtResource("1_dn228")
+
+[node name="Apples" type="TileMapLayer" parent="." unique_id=1034685533]
+tile_map_data = PackedByteArray("AAAJAAcAAAAAAAAABAABAAUAAAAAAAAABQALAAEAAAAAAAAABgAGAAMAAAAAAAAABQA=")
+tile_set = ExtResource("2_x6hwe")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=675458157]
 position = Vector2(104, 72)
@@ -26,3 +35,8 @@ position = Vector2(-16, 0)
 
 [node name="SnakeBody3" parent="Snake" unique_id=1444781712 instance=ExtResource("3_x6hwe")]
 position = Vector2(-16, 16)
+
+[connection signal="area_entered" from="Apples/RedApple" to="Apples/RedApple" method="_on_area_entered"]
+[connection signal="area_entered" from="Apples/GreenApple" to="Apples/GreenApple" method="_on_area_entered"]
+[connection signal="area_entered" from="Apples/GoldenApple" to="Apples/GoldenApple" method="_on_area_entered"]
+[connection signal="area_entered" from="Apples/@Area2D@60688" to="Apples/@Area2D@60688" method="_on_area_entered"]
