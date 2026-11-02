@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bem04iwfhic1m"]
+
+[ext_resource type="Theme" uid="uid://bk1ohgilsucp0" path="res://Themes/labels.tres" id="1_8207s"]
+[ext_resource type="Script" uid="uid://p6d16jqyjqc" path="res://Scripts/win.gd" id="1_vpoas"]
+[ext_resource type="Theme" uid="uid://7opt30pabxqi" path="res://Themes/buttons.tres" id="2_nru6u"]
+
+[node name="Win" type="Control" unique_id=67799892]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vpoas")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=286381396]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -38.0
+offset_right = 168.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="WinLabel" type="Label" parent="VBoxContainer" unique_id=150925628]
+layout_mode = 2
+theme = ExtResource("1_8207s")
+theme_override_font_sizes/font_size = 48
+text = "You win"
+horizontal_alignment = 1
+
+[node name="NextLevelButton" type="Button" parent="VBoxContainer" unique_id=1436305718]
+layout_mode = 2
+theme = ExtResource("2_nru6u")
+text = "Next Level"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]

@@ -8,13 +8,15 @@
 [ext_resource type="TileSet" uid="uid://ckks3mn2uf4b0" path="res://Tilesets/ennemies.tres" id="4_bnqav"]
 [ext_resource type="PackedScene" uid="uid://dg3eurs5r8axy" path="res://Scenes/Menus/hud.tscn" id="7_5de3p"]
 [ext_resource type="PackedScene" uid="uid://ckelvmimg5jry" path="res://Scenes/Menus/game_over.tscn" id="8_qjxb5"]
+[ext_resource type="PackedScene" uid="uid://bem04iwfhic1m" path="res://Scenes/Menus/win.tscn" id="9_w50ga"]
 
 [node name="DevLevel" type="Node2D" unique_id=1637969569]
 
-[node name="GameManager" parent="." unique_id=162518294 node_paths=PackedStringArray("snake", "hud", "game_over") instance=ExtResource("1_o1jow")]
+[node name="GameManager" parent="." unique_id=162518294 node_paths=PackedStringArray("snake", "hud", "game_over", "win") instance=ExtResource("1_o1jow")]
 snake = NodePath("../Snake")
 hud = NodePath("../CanvasLayer/HUD")
 game_over = NodePath("../CanvasLayer/GameOver")
+win = NodePath("../CanvasLayer/Win")
 
 [node name="Snake" parent="." unique_id=1141124438 instance=ExtResource("2_0phcs")]
 position = Vector2(120, 56)
@@ -51,7 +53,11 @@ zoom = Vector2(4, 4)
 
 [node name="GameOver" parent="CanvasLayer" unique_id=116814729 instance=ExtResource("8_qjxb5")]
 
-[connection signal="area_entered" from="Apples/@Area2D@157027" to="Apples/@Area2D@157027" method="_on_area_entered"]
-[connection signal="area_entered" from="Apples/@Area2D@157028" to="Apples/@Area2D@157028" method="_on_area_entered"]
-[connection signal="area_entered" from="Apples/@Area2D@157029" to="Apples/@Area2D@157029" method="_on_area_entered"]
-[connection signal="area_entered" from="Apples/@Area2D@157030" to="Apples/@Area2D@157030" method="_on_area_entered"]
+[node name="Win" parent="CanvasLayer" unique_id=67799892 instance=ExtResource("9_w50ga")]
+next_level = "res://Scenes/Levels/dev_level_2.tscn"
+
+[connection signal="area_entered" from="Apples/RedApple" to="Apples/RedApple" method="_on_area_entered"]
+[connection signal="area_entered" from="Apples/GreenApple" to="Apples/GreenApple" method="_on_area_entered"]
+[connection signal="area_entered" from="Apples/GoldenApple" to="Apples/GoldenApple" method="_on_area_entered"]
+[connection signal="area_entered" from="Apples/@Area2D@199151" to="Apples/@Area2D@199151" method="_on_area_entered"]
+[connection signal="area_entered" from="Ennemies/Chicken" to="Ennemies/Chicken" method="_on_area_entered"]

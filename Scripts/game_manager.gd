@@ -5,9 +5,11 @@ extends Node
 @export_group("Menus")
 @export var hud: HUD
 @export var game_over: GameOver
+@export var win: Win
 
 func _ready() -> void:
 	game_over.visible = false
+	win.visible = false
 	
 	await get_tree().create_timer(0.01).timeout
 	var apples = get_tree().get_nodes_in_group("Apples")
@@ -36,6 +38,9 @@ func _on_apple_eaten(type: Apple.Type):
 	snake.grow(grow_size)
 	hud.snake_length += grow_size
 	hud.apples_eaten += 1
+	
+	if hud.apples_eaten == hud.total_apples:
+		_win()
 
 func _on_snake_moved(head_pos: Vector2):
 	if _does_snake_bite_itself(head_pos):
@@ -54,3 +59,7 @@ func _game_over(death_cause: String):
 	snake.process_mode = Node.PROCESS_MODE_DISABLED
 	game_over.death_cause = death_cause
 	game_over.visible = true
+
+func _win():
+	snake.process_mode = Node.PROCESS_MODE_DISABLED
+	win.visible = true
