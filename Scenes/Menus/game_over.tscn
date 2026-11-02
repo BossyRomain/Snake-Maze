@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ckelvmimg5jry"]
+
+[ext_resource type="Script" uid="uid://b58a4ouakij22" path="res://Scripts/game_over.gd" id="1_frso8"]
+[ext_resource type="Theme" uid="uid://bk1ohgilsucp0" path="res://Themes/labels.tres" id="1_od6xv"]
+[ext_resource type="Theme" uid="uid://7opt30pabxqi" path="res://Themes/buttons.tres" id="2_b7003"]
+
+[node name="GameOver" type="Control" unique_id=116814729]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_frso8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1795421247]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -38.0
+offset_right = 216.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="VBoxContainer" unique_id=1495605285]
+layout_mode = 2
+theme = ExtResource("1_od6xv")
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathCauseLabel" type="Label" parent="VBoxContainer" unique_id=1808083163]
+layout_mode = 2
+theme = ExtResource("1_od6xv")
+theme_override_font_sizes/font_size = 14
+text = "Lorem ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="VBoxContainer" unique_id=1413502236]
+layout_mode = 2
+theme = ExtResource("2_b7003")
+text = "Retry"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]

@@ -24,3 +24,5 @@ path_max_distance = 1000.0
 simplify_path = true
 simplify_epsilon = 2.0
 debug_use_custom = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
