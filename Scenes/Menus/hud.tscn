@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dg3eurs5r8axy"]
+
+[ext_resource type="Script" uid="uid://c6pioujo6pl4r" path="res://Scripts/hud.gd" id="1_huu0p"]
+[ext_resource type="Texture2D" uid="uid://dn4nenai6ja0v" path="res://Assets/Icons/snake_length_icon.png" id="2_v1m4g"]
+[ext_resource type="Theme" uid="uid://bk1ohgilsucp0" path="res://Themes/labels.tres" id="3_smsyt"]
+[ext_resource type="Texture2D" uid="uid://c1lvsypfpbofr" path="res://Assets/Icons/apple_icon.png" id="3_v1m4g"]
+
+[node name="HUD" type="Control" unique_id=1926269235]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_huu0p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1086017874]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="SnakeLengthIcon" type="TextureRect" parent="HBoxContainer" unique_id=423153756]
+layout_mode = 2
+texture = ExtResource("2_v1m4g")
+stretch_mode = 5
+
+[node name="XLabel" type="Label" parent="HBoxContainer" unique_id=690107490]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_smsyt")
+theme_override_font_sizes/font_size = 24
+text = "x"
+vertical_alignment = 2
+
+[node name="SnakeLengthLabel" type="Label" parent="HBoxContainer" unique_id=1404651559]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_smsyt")
+theme_override_font_sizes/font_size = 24
+text = "0"
+vertical_alignment = 2
+
+[node name="Spacer" type="Label" parent="HBoxContainer" unique_id=408188010]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="ApplesEatenLabel" type="Label" parent="HBoxContainer" unique_id=876082080]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_smsyt")
+theme_override_font_sizes/font_size = 24
+text = "0"
+vertical_alignment = 2
+
+[node name="SlashLabel" type="Label" parent="HBoxContainer" unique_id=744290013]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_smsyt")
+theme_override_font_sizes/font_size = 24
+text = "/"
+vertical_alignment = 2
+
+[node name="TotalApplesLabel" type="Label" parent="HBoxContainer" unique_id=977168192]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_smsyt")
+theme_override_font_sizes/font_size = 24
+text = "15"
+vertical_alignment = 2
+
+[node name="ApplesIcon" type="TextureRect" parent="HBoxContainer" unique_id=568658427]
+layout_mode = 2
+texture = ExtResource("3_v1m4g")
+stretch_mode = 5

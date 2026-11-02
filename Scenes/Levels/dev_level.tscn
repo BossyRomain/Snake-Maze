@@ -6,11 +6,13 @@
 [ext_resource type="TileSet" uid="uid://owrriq8kv5gw" path="res://Tilesets/apples.tres" id="2_x6hwe"]
 [ext_resource type="PackedScene" uid="uid://dixhy1chv7gin" path="res://Scenes/Snake/snake_body.tscn" id="3_x6hwe"]
 [ext_resource type="TileSet" uid="uid://ckks3mn2uf4b0" path="res://Tilesets/ennemies.tres" id="4_bnqav"]
+[ext_resource type="PackedScene" uid="uid://dg3eurs5r8axy" path="res://Scenes/Menus/hud.tscn" id="7_5de3p"]
 
 [node name="DevLevel" type="Node2D" unique_id=1637969569]
 
-[node name="GameManager" parent="." unique_id=162518294 node_paths=PackedStringArray("snake") instance=ExtResource("1_o1jow")]
+[node name="GameManager" parent="." unique_id=162518294 node_paths=PackedStringArray("snake", "hud") instance=ExtResource("1_o1jow")]
 snake = NodePath("../Snake")
+hud = NodePath("../CanvasLayer/HUD")
 
 [node name="Snake" parent="." unique_id=1141124438 instance=ExtResource("2_0phcs")]
 position = Vector2(120, 56)
@@ -41,7 +43,11 @@ tile_set = ExtResource("4_bnqav")
 position = Vector2(104, 72)
 zoom = Vector2(4, 4)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2095639018]
+
+[node name="HUD" parent="CanvasLayer" unique_id=1926269235 instance=ExtResource("7_5de3p")]
+
 [connection signal="area_entered" from="Apples/RedApple" to="Apples/RedApple" method="_on_area_entered"]
 [connection signal="area_entered" from="Apples/GreenApple" to="Apples/GreenApple" method="_on_area_entered"]
 [connection signal="area_entered" from="Apples/GoldenApple" to="Apples/GoldenApple" method="_on_area_entered"]
-[connection signal="area_entered" from="Apples/@Area2D@83308" to="Apples/@Area2D@83308" method="_on_area_entered"]
+[connection signal="area_entered" from="Apples/@Area2D@110007" to="Apples/@Area2D@110007" method="_on_area_entered"]

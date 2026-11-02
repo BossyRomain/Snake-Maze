@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://bk1ohgilsucp0"]
+
+[ext_resource type="FontFile" uid="uid://box53papqdebn" path="res://Assets/Fonts/press_start.ttf" id="1_ks07f"]
+
+[resource]
+Label/fonts/font = ExtResource("1_ks07f")
