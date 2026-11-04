@@ -1,0 +1,57 @@
+[gd_scene format=4 uid="uid://bdwkh5xn0d2fx"]
+
+[ext_resource type="PackedScene" uid="uid://ctohvaqmynle8" path="res://Scenes/game_manager.tscn" id="1_rb0md"]
+[ext_resource type="PackedScene" uid="uid://bnd7qtv5pyy4l" path="res://Scenes/Snake/snake.tscn" id="2_u5ghp"]
+[ext_resource type="PackedScene" uid="uid://dixhy1chv7gin" path="res://Scenes/Snake/snake_body.tscn" id="3_hwvp3"]
+[ext_resource type="TileSet" uid="uid://cejkx7s3so1qb" path="res://Tilesets/maze.tres" id="4_afv7b"]
+[ext_resource type="TileSet" uid="uid://owrriq8kv5gw" path="res://Tilesets/apples.tres" id="5_7r2dd"]
+[ext_resource type="PackedScene" uid="uid://dg3eurs5r8axy" path="res://Scenes/Menus/hud.tscn" id="7_tjl6l"]
+[ext_resource type="PackedScene" uid="uid://ckelvmimg5jry" path="res://Scenes/Menus/game_over.tscn" id="8_3628d"]
+[ext_resource type="PackedScene" uid="uid://bem04iwfhic1m" path="res://Scenes/Menus/win.tscn" id="9_irw6p"]
+
+[node name="Level1" type="Node2D" unique_id=1637969569]
+
+[node name="Snake" parent="." unique_id=1141124438 instance=ExtResource("2_u5ghp")]
+position = Vector2(120, 72)
+prev_dir = Vector2(1, 0)
+
+[node name="SnakeBody" parent="Snake" unique_id=1761187421 instance=ExtResource("3_hwvp3")]
+
+[node name="SnakeBody2" parent="Snake" unique_id=1522426100 instance=ExtResource("3_hwvp3")]
+position = Vector2(-16, 0)
+
+[node name="SnakeBody3" parent="Snake" unique_id=1444781712 instance=ExtResource("3_hwvp3")]
+position = Vector2(-32, 0)
+
+[node name="Maze" type="TileMapLayer" parent="." unique_id=288022533]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAEAAMAAAAAAAMAAAAIAAMAAAABAAMAAAAEAAcAAAACAAMAAAAIAAcAAAADAAMAAAAFAAMAAAABAAIAAAAGAAMAAAABAAIAAAAHAAMAAAABAAIAAAAIAAQAAAACAAIAAAAIAAUAAAACAAIAAAAIAAYAAAACAAIAAAAHAAcAAAAAAAIAAAAGAAcAAAAAAAIAAAAFAAcAAAAAAAIAAAAEAAYAAAADAAIAAAAEAAUAAAADAAIAAAAEAAQAAAADAAIAAAAGAAUAAAACAAYAAAA=")
+tile_set = ExtResource("4_afv7b")
+
+[node name="Apples" type="TileMapLayer" parent="." unique_id=1034685533]
+tile_map_data = PackedByteArray("AAAHAAYAAAAAAAAABAA=")
+tile_set = ExtResource("5_7r2dd")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=675458157]
+position = Vector2(104, 88)
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2095639018]
+
+[node name="HUD" parent="CanvasLayer" unique_id=1926269235 instance=ExtResource("7_tjl6l")]
+
+[node name="GameOver" parent="CanvasLayer" unique_id=116814729 instance=ExtResource("8_3628d")]
+visible = false
+
+[node name="Win" parent="CanvasLayer" unique_id=67799892 instance=ExtResource("9_irw6p")]
+visible = false
+next_level = "res://Scenes/Levels/level_2.tscn"
+
+[node name="GameManager" parent="." unique_id=162518294 node_paths=PackedStringArray("snake", "apples_layer", "hud", "game_over", "win") instance=ExtResource("1_rb0md")]
+snake = NodePath("../Snake")
+apples_layer = NodePath("../Apples")
+hud = NodePath("../CanvasLayer/HUD")
+game_over = NodePath("../CanvasLayer/GameOver")
+win = NodePath("../CanvasLayer/Win")
+
+[connection signal="area_entered" from="Apples/RedApple" to="Apples/RedApple" method="_on_area_entered"]

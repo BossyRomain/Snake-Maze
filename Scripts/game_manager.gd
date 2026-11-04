@@ -2,24 +2,32 @@ extends Node
 
 @export var snake: Snake
 
+@export_group("TileMap Layers")
+@export var apples_layer: TileMapLayer
+@export var chickens_layer: TileMapLayer = null
+
 @export_group("Menus")
 @export var hud: HUD
 @export var game_over: GameOver
 @export var win: Win
 
 func _ready() -> void:
+	apples_layer.update_internals()
+	if chickens_layer != null:
+		chickens_layer.update_internals()
+	
 	game_over.visible = false
 	win.visible = false
 	
-	await get_tree().create_timer(0.01).timeout
-	var apples = get_tree().get_nodes_in_group("Apples")
+	var apples = apples_layer.get_children()
 	for apple in apples:
 		apple.eaten.connect(_on_apple_eaten)
 	
-	var chickens = get_tree().get_nodes_in_group("Chickens")
-	for chicken in chickens:
-		chicken.snake_bitten.connect(_on_chicken_bite_snake)
-		snake.moved.connect(chicken.move)
+	if chickens_layer != null:
+		var chickens = chickens_layer.get_children()
+		for chicken in chickens:
+			chicken.snake_bitten.connect(_on_chicken_bite_snake)
+			snake.moved.connect(chicken.move)
 	
 	snake.moved.connect(_on_snake_moved)
 	

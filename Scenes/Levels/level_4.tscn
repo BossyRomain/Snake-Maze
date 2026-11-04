@@ -1,0 +1,64 @@
+[gd_scene format=4 uid="uid://csyyax7ad76m7"]
+
+[ext_resource type="PackedScene" uid="uid://bnd7qtv5pyy4l" path="res://Scenes/Snake/snake.tscn" id="1_h0uxt"]
+[ext_resource type="PackedScene" uid="uid://dixhy1chv7gin" path="res://Scenes/Snake/snake_body.tscn" id="2_keyqw"]
+[ext_resource type="TileSet" uid="uid://cejkx7s3so1qb" path="res://Tilesets/maze.tres" id="3_gsxik"]
+[ext_resource type="TileSet" uid="uid://owrriq8kv5gw" path="res://Tilesets/apples.tres" id="4_3asqb"]
+[ext_resource type="TileSet" uid="uid://ckks3mn2uf4b0" path="res://Tilesets/ennemies.tres" id="5_keyqw"]
+[ext_resource type="PackedScene" uid="uid://dg3eurs5r8axy" path="res://Scenes/Menus/hud.tscn" id="5_slbhm"]
+[ext_resource type="PackedScene" uid="uid://ckelvmimg5jry" path="res://Scenes/Menus/game_over.tscn" id="6_i5g5g"]
+[ext_resource type="PackedScene" uid="uid://bem04iwfhic1m" path="res://Scenes/Menus/win.tscn" id="7_3osng"]
+[ext_resource type="PackedScene" uid="uid://ctohvaqmynle8" path="res://Scenes/game_manager.tscn" id="8_eb4ip"]
+
+[node name="Level4" type="Node2D" unique_id=1637969569]
+
+[node name="Snake" parent="." unique_id=1141124438 instance=ExtResource("1_h0uxt")]
+position = Vector2(120, 152)
+prev_dir = Vector2(1, 0)
+
+[node name="SnakeBody" parent="Snake" unique_id=1761187421 instance=ExtResource("2_keyqw")]
+
+[node name="SnakeBody2" parent="Snake" unique_id=1522426100 instance=ExtResource("2_keyqw")]
+position = Vector2(-16, 0)
+
+[node name="SnakeBody3" parent="Snake" unique_id=1444781712 instance=ExtResource("2_keyqw")]
+position = Vector2(-16, 16)
+
+[node name="Maze" type="TileMapLayer" parent="." unique_id=288022533]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAGAAYAAAAAAAMAAAAHAAYAAAABAAIAAAAIAAYAAAABAAIAAAAJAAYAAAABAAIAAAAKAAYAAAABAAIAAAALAAYAAAABAAIAAAAMAAYAAAABAAIAAAANAAYAAAABAAIAAAAOAAYAAAABAAMAAAAOAAcAAAACAAIAAAAOAAgAAAACAAIAAAAOAAkAAAACAAIAAAAOAAoAAAADAAMAAAANAAoAAAAAAAIAAAAMAAoAAAAAAAIAAAALAAoAAAAAAAIAAAAGAAcAAAADAAIAAAAGAAgAAAADAAAAAAAIAAgAAAACAAQAAAAMAAgAAAADAAQAAAAJAAgAAAAAAAYAAAAKAAgAAAAAAAYAAAALAAgAAAAAAAYAAAAHAAoAAAACAAQAAAAIAAoAAAABAAEAAAAKAAoAAAAAAAAAAAAKAAsAAAACAAIAAAAFAAwAAAACAAMAAAAGAAwAAAABAAAAAAAFAAoAAAADAAIAAAAFAAsAAAADAAIAAAAFAAkAAAADAAIAAAAFAAgAAAAAAAMAAAAKAAwAAAACAAIAAAAKAA0AAAACAAIAAAAIAAsAAAABAAYAAAAIAAwAAAABAAQAAAAKAA4AAAADAAMAAAAGAA4AAAACAAMAAAAJAA4AAAAAAAIAAAAIAA4AAAAAAAIAAAAHAA4AAAAAAAIAAAAGAA0AAAADAAIAAAAHAAsAAAADAAYAAAAHAAwAAAADAAYAAAAHAA0AAAADAAYAAAAIAA0AAAADAAYAAAAJAA0AAAADAAYAAAAJAAwAAAADAAYAAAAJAAsAAAADAAYAAAAJAAoAAAADAAYAAAAJAAkAAAADAAYAAAAIAAkAAAADAAYAAAAHAAkAAAADAAYAAAAGAAkAAAADAAYAAAAGAAoAAAADAAYAAAAGAAsAAAADAAYAAAAHAAgAAAADAAYAAAAHAAcAAAADAAYAAAAIAAcAAAADAAYAAAAJAAcAAAADAAYAAAAKAAcAAAADAAYAAAALAAcAAAADAAYAAAAMAAcAAAADAAYAAAANAAcAAAADAAYAAAANAAgAAAADAAYAAAANAAkAAAADAAYAAAAMAAkAAAADAAYAAAALAAkAAAADAAYAAAAKAAkAAAADAAYAAAA=")
+tile_set = ExtResource("3_gsxik")
+
+[node name="Apples" type="TileMapLayer" parent="." unique_id=1034685533]
+tile_map_data = PackedByteArray("AAAKAAkAAAAAAAAABAA=")
+tile_set = ExtResource("4_3asqb")
+
+[node name="Chickens" type="TileMapLayer" parent="." unique_id=1730287879]
+tile_map_data = PackedByteArray("AAAJAAsAAAAAAAAAAgA=")
+tile_set = ExtResource("5_keyqw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=675458157]
+position = Vector2(152, 168)
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2095639018]
+
+[node name="HUD" parent="CanvasLayer" unique_id=1926269235 instance=ExtResource("5_slbhm")]
+
+[node name="GameOver" parent="CanvasLayer" unique_id=116814729 instance=ExtResource("6_i5g5g")]
+visible = false
+
+[node name="Win" parent="CanvasLayer" unique_id=67799892 instance=ExtResource("7_3osng")]
+visible = false
+next_level = "res://Scenes/Levels/level_5.tscn"
+
+[node name="GameManager" parent="." unique_id=162518294 node_paths=PackedStringArray("snake", "apples_layer", "chickens_layer", "hud", "game_over", "win") instance=ExtResource("8_eb4ip")]
+snake = NodePath("../Snake")
+apples_layer = NodePath("../Apples")
+chickens_layer = NodePath("../Chickens")
+hud = NodePath("../CanvasLayer/HUD")
+game_over = NodePath("../CanvasLayer/GameOver")
+win = NodePath("../CanvasLayer/Win")
+
+[connection signal="area_entered" from="Apples/RedApple" to="Apples/RedApple" method="_on_area_entered"]
+[connection signal="area_entered" from="Chickens/Chicken" to="Chickens/Chicken" method="_on_area_entered"]

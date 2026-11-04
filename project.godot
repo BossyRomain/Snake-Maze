@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Snake Maze"
-run/main_scene="uid://cf4g8tm87axrr"
+run/main_scene="uid://bdwkh5xn0d2fx"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,11 +19,6 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-
-[global_group]
-
-Apples=""
-Chickens=""
 
 [input]
 
